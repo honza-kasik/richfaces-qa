@@ -73,6 +73,7 @@
         <tomcat7.home>${project.build.directory}/apache-tomcat-${version.tomcat7}</tomcat7.home>
         <tomcat8.home>${project.build.directory}/apache-tomcat-${version.tomcat8}</tomcat8.home>
 
+        <jboss.dist>jboss.dist.path.not.specified</jboss.dist>
         <jbossEAP61Home>${project.build.directory}/jboss-eap-6.1</jbossEAP61Home>
         <jbossEAP62Home>${project.build.directory}/jboss-eap-6.2</jbossEAP62Home>
         <jbossEAP63Home>${project.build.directory}/jboss-eap-6.3</jbossEAP63Home>
