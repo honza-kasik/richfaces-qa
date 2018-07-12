@@ -21,18 +21,20 @@
  */
 package org.richfaces.tests.metamer.ftest;
 
+import org.apache.commons.lang.StringUtils;
+import org.jboss.test.selenium.utils.testng.TestInfo;
+import org.richfaces.tests.metamer.ftest.extension.configurator.config.Config;
+import org.richfaces.tests.utils.ReflectionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.ITestResult;
+
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.apache.commons.lang.StringUtils;
-import org.jboss.test.selenium.utils.testng.TestInfo;
-import org.richfaces.tests.metamer.ftest.extension.configurator.config.Config;
-import org.richfaces.tests.utils.ReflectionUtils;
-import org.testng.ITestResult;
 
 /**
  * @author <a href="mailto:ppitonak@redhat.com">Lukas Fryc</a>
@@ -41,24 +43,31 @@ import org.testng.ITestResult;
  */
 public final class MetamerTestInfo {
 
+    private static final Logger log = LoggerFactory.getLogger(MetamerTestInfo.class);
+
     private MetamerTestInfo() {
     }
 
     public static String getConfigurationInfo(ITestResult result) {
         Object testInstance = result.getInstance();
         Config configuration = null;
-        try {
-            Field configField = ReflectionUtils.getFirstFieldWithName("currentConfiguration", testInstance);
-            configuration = (Config) ReflectionUtils.getFieldValue(configField, testInstance);
-        } catch (Exception ex) {
-            ex.printStackTrace(System.err);
-        }
+        if (testInstance != null) {
+            try {
+                Field configField = ReflectionUtils.getFirstFieldWithName("currentConfiguration", testInstance);
+                configuration = (Config) ReflectionUtils.getFieldValue(configField, testInstance);
+            } catch (Exception ex) {
+                ex.printStackTrace(System.err);
+            }
 
-        List<String> info = new LinkedList<String>();
-        if (configuration != null) {
-            info.add(configuration.toString());
+            List<String> info = new LinkedList<String>();
+            if (configuration != null) {
+                info.add(configuration.toString());
+            }
+            return StringUtils.join(info, "; ");
+        } else {
+            log.error("Test instance is null! Returning empty string!");
+            return "";
         }
-        return StringUtils.join(info, "; ");
     }
 
     public static String getConfigurationInfoInParenthesses(ITestResult result) {
