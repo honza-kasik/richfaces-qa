@@ -876,18 +876,59 @@
                     <version>2.0.3.Final</version>
                 </dependency>
             </dependencies>
+        </profile>
+        <profile>
+            <id>jbosseap-managed-7</id>
+            <properties>
+                <metamer.classifier>jee6</metamer.classifier>
+                <version.eap>property.version.eap.not.specified</version.eap>
+            </properties>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <version>2.0.0.Final</version>
+                    <scope>test</scope>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.wildfly.core</groupId>
+                    <artifactId>wildfly-controller-client</artifactId>
+                    <version>2.1.0.Final</version>
+                </dependency>
+
+                <dependency>
+                    <groupId>org.wildfly.core</groupId>
+                    <artifactId>wildfly-cli</artifactId>
+                    <version>2.1.0.Final</version>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.jboss.logmanager</groupId>
+                            <artifactId>jboss-logmanager</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+
+                <!-- probably a bug in wildfly-cli dependencies -->
+                <!-- not required if the dependency on wildfly-patching below is also added -->
+                <dependency>
+                    <groupId>org.jboss.logmanager</groupId>
+                    <artifactId>jboss-logmanager</artifactId>
+                    <version>2.0.3.Final</version>
+                </dependency>
+            </dependencies>
             <build>
                 <plugins>
                     <plugin>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
                             <systemProperties>
-                                <arquillian.launch>jbosseap-managed-7-2</arquillian.launch>
+                                <arquillian.launch>jbosseap-managed-7</arquillian.launch>
                                 <!-- following is used in tests -->
-                                <JBOSS_HOME>${jbossEAP72Home}</JBOSS_HOME>
+                                <JBOSS_HOME>${jboss.dist}</JBOSS_HOME>
                             </systemProperties>
                             <environmentVariables>
-                                <JBOSS_HOME>${jbossEAP72Home}</JBOSS_HOME>
+                                <JBOSS_HOME>${jboss.dist}</JBOSS_HOME>
                             </environmentVariables>
                         </configuration>
                     </plugin>
