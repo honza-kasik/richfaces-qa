@@ -15,6 +15,12 @@
     </context-param>
     -->
 
+    <!-- http://java.sun.com/developer/technicalArticles/Intl/HTTPCharset/ -->
+    <!-- Now all forms take only UTF-8 -->
+    <context-param>
+        <param-name>PARAMETER_ENCODING</param-name>
+        <param-value>UTF-8</param-value>
+    </context-param>
     <context-param>
         <param-name>com.sun.faces.allowTextChildren</param-name>
         <param-value>true</param-value>
@@ -123,5 +129,5 @@
     <session-config>
         <tracking-mode>COOKIE</tracking-mode>
     </session-config>
-    
+
 </web-app>
