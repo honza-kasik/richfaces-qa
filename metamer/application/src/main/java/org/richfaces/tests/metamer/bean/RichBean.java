@@ -27,6 +27,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -39,6 +40,9 @@ import javax.el.ExpressionFactory;
 import javax.el.ValueExpression;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIOutput;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -48,6 +52,7 @@ import javax.faces.model.SelectItem;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.lang.RandomStringUtils;
 import org.richfaces.event.ItemChangeEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -638,5 +643,68 @@ public class RichBean implements Serializable {
     public enum Skinning {
 
         NONE, SKINNING, SKINNING_CLASSES
+    }
+
+    /**
+     * Workaround for Wildfly/JSF 2.3+ where some RichFaces components are resources now and all resources must have a
+     * name...
+     */
+    public void checkForEmptyName() {
+        logger.info("Looking for any component with name attribute empty which may cause a NPE...");
+        final List<UIComponent> componentsWithNoName = findUiComponentsWithNoName();
+        logger.debug("Found these components without name which would cause a NPE: " +
+                getComponentsInfo(componentsWithNoName));
+        for (UIComponent component : componentsWithNoName) {
+            logger.debug("Filling name for component with client id '{}'.", component.getClientId());
+            final FacesContext context = FacesContext.getCurrentInstance();
+            context.getViewRoot().findComponent(component.getClientId());
+            component.getAttributes().put("name", "name_filled_so_it_would_not_be_null_" +
+                    RandomStringUtils.randomAlphanumeric(7));
+        }
+        logger.debug("Just checking if there are any components left without name...");
+        final List<UIComponent> componentsWithNoNameAfter = findUiComponentsWithNoName();
+        if (componentsWithNoNameAfter == null || componentsWithNoName.isEmpty()) {
+            logger.debug("None were found! All components have name attribute!");
+        } else {
+            logger.warn("Some were found after trying to set name to all previously found with no name: " +
+                    getComponentsInfo(componentsWithNoNameAfter));
+        }
+    }
+
+    private List<UIComponent> findUiComponentsWithNoName() {
+        final FacesContext facesContext = FacesContext.getCurrentInstance();
+        final UIViewRoot root = facesContext.getViewRoot();
+
+        final List<UIComponent> components = new LinkedList<UIComponent>();
+
+        final List<UIComponent> kids = root.getComponentResources(facesContext);
+        for (UIComponent current : kids) {
+            if (!current.getAttributes().containsKey("name")) {
+                components.add(current);
+            }
+        }
+
+        return components;
+    }
+
+    private String getComponentsInfo(List<UIComponent> components) {
+        final StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\n================================\n");
+        for (UIComponent component : components) {
+            Map<String, Object> map = component.getAttributes();
+            for (String key: map.keySet()) {
+                stringBuilder.append(key).append(": ").append(map.get(key)).append("\n");
+            }
+            stringBuilder.append("CLIENT_ID: ").append(component.getClientId()).append("\n");
+            stringBuilder.append("CLASS: ").append(component.getClass().toString()).append("\n");
+            stringBuilder.append("TO_STRING: '").append(component.toString()).append("'\n");
+            if (component.getClass().equals(javax.faces.component.UIOutput.class)) {
+                stringBuilder.append("UI_OUTPUT_VALUE: '")
+                        .append(((UIOutput) component).getValue())
+                        .append("'\n");
+            }
+            stringBuilder.append("================================\n");
+        }
+        return stringBuilder.toString();
     }
 }

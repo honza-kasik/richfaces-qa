@@ -117,7 +117,7 @@ FSF site: http://www.fsf.org. -->
         <dependency>
             <groupId>org.jboss.netty</groupId>
             <artifactId>netty</artifactId>
-            <version>3.2.6.Final</version>
+            <version>3.2.10.Final</version>
         </dependency>
 
         <dependency>
@@ -169,6 +169,19 @@ FSF site: http://www.fsf.org. -->
         <dependency>
             <groupId>net.sourceforge.cssparser</groupId>
             <artifactId>cssparser</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jboss.spec.javax.faces</groupId>
+            <artifactId>jboss-jsf-api_2.3_spec</artifactId>
+            <version>2.3.5.SP1</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>xml-apis</groupId>
+            <artifactId>xml-apis</artifactId>
+            <version>1.4.01</version>
         </dependency>
 
     </dependencies>

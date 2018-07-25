@@ -41,6 +41,8 @@ Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA
 
         <h:body>
 
+            <f:event type="preRenderView" listener="#{richBean.checkForEmptyName}" />
+
             <h:form id="executeCheckerForm">
                 <h:selectBooleanCheckbox id="executeChecker" value="#{richBean.executeChecker}" style="display: none" />
             </h:form>

@@ -5,6 +5,7 @@
                 <paths>
                     <path name="org/w3c/dom/css"/>
                     <path name="org/w3c/dom/stylesheets"/>
+                    <path name="javax/api"/>
                 </paths>
             </system>
         </dependencies>
