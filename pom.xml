@@ -67,7 +67,7 @@
         <jboss.javaee6.spec.version>3.0.3.Final</jboss.javaee6.spec.version>
 
         <version.selenium>2.53.0</version.selenium>
-        <version.testng>6.9.10</version.testng>
+        <version.testng>6.14.3</version.testng>
 
         <!-- these are set as Environmental variables to let Arquillian know where distribution of managed containers are -->
         <tomcat7.home>${project.build.directory}/apache-tomcat-${version.tomcat7}</tomcat7.home>

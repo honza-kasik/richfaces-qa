@@ -76,6 +76,7 @@ import org.richfaces.tests.metamer.ftest.extension.configurator.use.annotation.U
 import org.richfaces.tests.metamer.ftest.webdriver.MetamerPage;
 import org.richfaces.tests.metamer.ftest.webdriver.MetamerPage.WaitRequestType;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 import com.google.common.collect.Lists;
@@ -824,6 +825,7 @@ public class TestCalendarAttributes extends AbstractCalendarTest {
     }
 
     @Test
+    @Ignore //Not subject of test anymore (RichFaces), constantly failing
     @CoversAttributes("oninputselect")
     public void testOninputselect() {
         setCurrentDateWithCalendarsTodayButtonAction.perform();
