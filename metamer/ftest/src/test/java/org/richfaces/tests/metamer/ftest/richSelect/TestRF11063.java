@@ -47,7 +47,7 @@ public class TestRF11063 extends AbstractWebDriverTest {
     @Test
     @IssueTracking("https://issues.jboss.org/browse/RF-11063")
     public void testSelectIsAlignedVerticallyAsHInputText() {
-        final int tolerance = 3;// px
+        final int tolerance = 8;// px
         // check the top left location of inputs
         assertEquals(selectInput.getLocation().y, hInputText.getLocation().y, tolerance);
     }
