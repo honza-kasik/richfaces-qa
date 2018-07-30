@@ -663,11 +663,11 @@ public class RichBean implements Serializable {
         }
         logger.debug("Just checking if there are any components left without name...");
         final List<UIComponent> componentsWithNoNameAfter = findUiComponentsWithNoName();
-        if (componentsWithNoNameAfter == null || componentsWithNoName.isEmpty()) {
-            logger.debug("None were found! All components have name attribute!");
-        } else {
+        if (componentsWithNoNameAfter != null && componentsWithNoName.size() > 0) {
             logger.warn("Some were found after trying to set name to all previously found with no name: " +
                     getComponentsInfo(componentsWithNoNameAfter));
+        } else {
+            logger.debug("None were found! All components have name attribute!");
         }
     }
 
