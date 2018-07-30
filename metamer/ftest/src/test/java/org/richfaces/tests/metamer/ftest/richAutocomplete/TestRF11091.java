@@ -47,7 +47,7 @@ public class TestRF11091 extends AbstractWebDriverTest {
     @Test
     @IssueTracking("https://issues.jboss.org/browse/RF-11091")
     public void testAutocompleteIsAlignedVerticallyAsHInputText() {
-        final int tolerance = 3;// px
+        final int tolerance = 8;// px
         // check the top left location of inputs
         assertEquals(hInputText.getLocation().y, autocompleteInput.getLocation().y, tolerance);
     }
