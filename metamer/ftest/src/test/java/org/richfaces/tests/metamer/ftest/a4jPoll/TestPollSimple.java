@@ -96,7 +96,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         pollAttributes.set(PollAttributes.enabled, true);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("action")
     public void testAction() {
         waitForNSubsequentRequests(2);
@@ -104,7 +104,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         getMetamerPage().assertPhases(ANY_PHASE);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("actionListener")
     @Unstable
     public void testActionListener() {
@@ -113,7 +113,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         getMetamerPage().assertPhases(ANY_PHASE);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("bypassUpdates")
     public void testBypassUpdates() {
         pollAttributes.set(PollAttributes.bypassUpdates, true);
@@ -122,7 +122,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         getMetamerPage().assertPhases(RESTORE_VIEW, APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, RENDER_RESPONSE);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes({ "ontimer", "onbegin", "onbeforedomupdate", "oncomplete" })
     @UseWithField(field = "event", valuesFrom = FROM_FIELD, value = "events")
     public void testClientSideEvent() {
@@ -136,13 +136,13 @@ public class TestPollSimple extends AbstractWebDriverTest {
         testRequestEventsAfter(events);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes({ "ontimer", "onbegin", "onbeforedomupdate", "oncomplete" })
     public void testClientSideEventsOrder() {
         testClientSideEventHandlers(events);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("data")
     public void testData() {
         testData(new Action() {
@@ -153,7 +153,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         });
     }
 
-    @Test(groups = "smoke")
+    @Test(enabled=false, groups = "smoke")
     @CoversAttributes("enabled")
     public void testEnabled() {
         pollAttributes.set(PollAttributes.enabled, false);
@@ -166,7 +166,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         waitForNSubsequentRequests(2);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("execute")
     public void testExecute() {
         pollAttributes.set(PollAttributes.execute, "executeChecker");
@@ -176,7 +176,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         getMetamerPage().assertListener(UPDATE_MODEL_VALUES, "executeChecker");
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("immediate")
     public void testImmediate() {
         pollAttributes.set(PollAttributes.immediate, true);
@@ -185,13 +185,13 @@ public class TestPollSimple extends AbstractWebDriverTest {
         getMetamerPage().assertPhases(RESTORE_VIEW, APPLY_REQUEST_VALUES, RENDER_RESPONSE);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("interval")
     public void testInterval_inAllTemplates() {
         testDelay(intervalTestingAction, intervalTestingAction, "interval", 1500);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("interval")
     @UseWithField(field = "interval", valuesFrom = FROM_FIELD, value = "ints")
     @Templates("plain")
@@ -199,7 +199,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         testDelay(intervalTestingAction, intervalTestingAction, "interval", interval);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("limitRender")
     public void testLimitRender() {
         attsSetter()
@@ -215,7 +215,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         assertTrue(time.equals(getRequestTimeElement().getText()));
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("onerror")
     public void testOnerror() {
         pollAttributes.set(PollAttributes.enabled, false);
@@ -230,7 +230,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         });
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("render")
     public void testRender() {
         pollAttributes.set(PollAttributes.render, "renderChecker");
@@ -244,7 +244,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         assertFalse(time.equals(getRequestTimeElement().getText()));
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes({ "rendered", "enabled" })
     @Templates("plain")
     public void testRendered() {
@@ -261,7 +261,7 @@ public class TestPollSimple extends AbstractWebDriverTest {
         waitForNSubsequentRequests(2);
     }
 
-    @Test
+    @Test(enabled=false)
     @CoversAttributes("status")
     public void testStatus() {
         testStatus(null);
