@@ -37,7 +37,7 @@ public class TestPlaceholderWithTextarea extends AbstractPlaceholderNonJSFTest {
 
     @Ignore
     //Input 1 text color expected [java.awt.Color[r=0,g=0,b=0]] but found [java.awt.Color[r=26,g=26,b=26]]
-    @Test
+    @Test(enabled = false)
     public void testClickOnInputWithPlaceholder() {
         super.testClickOnInputWithPlaceholder();
     }
@@ -48,7 +48,7 @@ public class TestPlaceholderWithTextarea extends AbstractPlaceholderNonJSFTest {
         super.testDeleteTextFromInputWithPlaceholder();
     }
 
-    @Test
+    @Test(enabled = false)
     @IssueTracking("https://issues.jboss.org/browse/RF-12650")
     @Templates(value = "plain")
     public void testRendered() {
