@@ -41,6 +41,7 @@ import org.richfaces.fragment.tree.RichFacesTree;
 import org.richfaces.fragment.tree.RichFacesTreeNode;
 import org.richfaces.fragment.tree.Tree.TreeNode;
 import org.richfaces.tests.metamer.ftest.AbstractWebDriverTest;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 
 /**
@@ -65,6 +66,7 @@ public class TestTreeModelAdaptorLazyLoading extends AbstractWebDriverTest {
     }
 
     @Test(groups = "smoke")
+    @Ignore //not subject of testing anymore
     public void testLazyLoading() {
         assertEquals(getLazyInitialized(), getListOfVisibleNodes());
         for (Integer[] path : paths) {
