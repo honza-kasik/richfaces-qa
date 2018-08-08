@@ -42,9 +42,8 @@ public class TestPlaceholderWithTextarea extends AbstractPlaceholderNonJSFTest {
         super.testClickOnInputWithPlaceholder();
     }
 
-    @Ignore
-    //Input 1 text color expected [java.awt.Color[r=0,g=0,b=0]] but found [java.awt.Color[r=26,g=26,b=26]]
-    @Test
+
+    @Test(enabled = false)
     public void testDeleteTextFromInputWithPlaceholder() {
         super.testDeleteTextFromInputWithPlaceholder();
     }
@@ -56,16 +55,14 @@ public class TestPlaceholderWithTextarea extends AbstractPlaceholderNonJSFTest {
         super.testRendered();
     }
 
-    @Ignore
-    //Input 1 text color expected [java.awt.Color[r=0,g=0,b=0]] but found [java.awt.Color[r=26,g=26,b=26]]
-    @Test
+
+    @Test(enabled = false)
     public void testSelectorSingle() {
         super.testSelectorSingle();
     }
 
-    @Ignore
-    //Input 1 text color expected [java.awt.Color[r=0,g=0,b=0]] but found [java.awt.Color[r=26,g=26,b=26]]
-    @Test
+
+    @Test(enabled = false)
     public void testSelectorMultiple() {
         super.testSelectorMultiple();
     }
@@ -81,9 +78,8 @@ public class TestPlaceholderWithTextarea extends AbstractPlaceholderNonJSFTest {
         super.testStyleClass();
     }
 
-    @Ignore
-    //Input 1 text color expected [java.awt.Color[r=0,g=0,b=0]] but found [java.awt.Color[r=26,g=26,b=26]]
-    @Test
+
+    @Test(enabled = false)
     public void testTypeToInputWithPlaceholder() {
         super.testTypeToInputWithPlaceholder();
     }

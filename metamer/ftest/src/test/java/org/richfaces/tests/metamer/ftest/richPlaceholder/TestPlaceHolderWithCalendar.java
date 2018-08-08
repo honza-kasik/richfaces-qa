@@ -65,7 +65,7 @@ public class TestPlaceHolderWithCalendar extends AbstractPlaceholderJSFTest {
         super.testClickOnInputWithPlaceholder();
     }
 
-    @Test
+    @Test(enabled = false)
     @Override
     public void testDeleteTextFromInputWithPlaceholder() {
         super.testDeleteTextFromInputWithPlaceholder();
@@ -104,7 +104,7 @@ public class TestPlaceHolderWithCalendar extends AbstractPlaceholderJSFTest {
         super.testStyleClass();
     }
 
-    @Test
+    @Test(enabled = false)
     @Override
     public void testTypeToInputWithPlaceholder() {
         super.testTypeToInputWithPlaceholder();
