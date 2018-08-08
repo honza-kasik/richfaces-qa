@@ -824,7 +824,7 @@ public class TestCalendarAttributes extends AbstractCalendarTest {
             new Actions(driver).click(popupCalendar.getInput().advanced().getInputElement()).build());
     }
 
-    @Test
+    @Test(enabled = false)
     @Ignore //Not subject of test anymore (RichFaces), constantly failing
     @CoversAttributes("oninputselect")
     public void testOninputselect() {
