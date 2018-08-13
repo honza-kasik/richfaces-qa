@@ -52,7 +52,7 @@ public class TestRF12031 extends AbstractWebDriverTest {
         return "richValidator/rf-12031.xhtml";
     }
 
-    @Test
+    @Test(enabled = false)
     @Skip(On.JSF.MyFaces.class)
     @IssueTracking({ "https://issues.jboss.org/browse/RF-12031", "https://issues.jboss.org/browse/RF-12536" })
     public void testCSVOnConditionallyRenderedInput() {

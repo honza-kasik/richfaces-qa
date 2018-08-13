@@ -53,7 +53,7 @@ public class TestRF12510 extends AbstractWebDriverTest {
         return Integer.parseInt(counter.getText());
     }
 
-    @Test
+    @Test(enabled = false)
     @IssueTracking("https://issues.jboss.org/browse/RF-12510")
     public void testTriggerJSFunctionAndSeeHowManyTimesCalledMethodOnData() {
         Graphene.guardAjax(jsFunctionTrigger).click();

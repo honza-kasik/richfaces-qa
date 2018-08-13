@@ -47,7 +47,7 @@ public class TestTogglePanelItemChangeListener extends AbstractItemChangeListene
         super.testICLAsAttributeOfComponent(ICL_as_ComponentAttribute_PhaseName);
     }
 
-    @Test
+    @Test(enabled = false)
     @Templates("uiRepeat")
     @Skip(On.JSF.VersionMojarraGreaterThan2211.class)
     public void testICLAsAttributeInUiRepeat() {
@@ -67,7 +67,7 @@ public class TestTogglePanelItemChangeListener extends AbstractItemChangeListene
         super.testICLInComponentWithType(ICL_inComponent_usingType_PhaseName);
     }
 
-    @Test
+    @Test(enabled = false)
     @Templates("uiRepeat")
     @Skip(On.JSF.VersionMojarraGreaterThan2211.class)
     public void testICLInsideComponentUsingTypeInUiRepeat() {

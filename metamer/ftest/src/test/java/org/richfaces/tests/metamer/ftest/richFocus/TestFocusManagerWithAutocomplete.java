@@ -50,7 +50,7 @@ public class TestFocusManagerWithAutocomplete extends AbstractWebDriverTest {
         return "richFocus/rf-13251.xhtml";
     }
 
-    @Test
+    @Test(enabled = false)
     @IssueTracking("https://issues.jboss.org/browse/RF-13251")
     public void testFocusToAutocomplete() {
         Assert.assertFalse(
@@ -62,7 +62,7 @@ public class TestFocusManagerWithAutocomplete extends AbstractWebDriverTest {
             "Autocomplete's input is not focused");
     }
 
-    @Test
+    @Test(enabled = false)
     public void testFocusToTextInput() {
         Assert.assertFalse(new ElementIsFocused(inputText).apply(driver), "Text input should not be focused");
         Graphene.guardAjax(buttonInputText).click();

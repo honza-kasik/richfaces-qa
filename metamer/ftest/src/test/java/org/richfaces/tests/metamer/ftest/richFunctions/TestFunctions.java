@@ -125,7 +125,7 @@ public class TestFunctions extends AbstractWebDriverTest {
         return Boolean.parseBoolean(userInRoleUOutput.getText());
     }
 
-    @Test
+    @Test(enabled = false)
     public void testFadeOutFadeIn() {
         assertVisible(input.advanced().getInputElement(), "Input should be visible");
         new Actions(driver).moveToElement(fadeOut).perform();
