@@ -184,6 +184,28 @@ FSF site: http://www.fsf.org. -->
             <version>1.4.01</version>
         </dependency>
 
+        <!--JDK 11-->
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.11</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.activation</groupId>
+            <artifactId>activation</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -212,6 +234,7 @@ FSF site: http://www.fsf.org. -->
                         <manifestEntries>
                             <!-- define SLF4J dependency in JBoss AS 7 -->
                             <Dependencies>org.slf4j,org.jboss.as.process-controller,org.jboss.as.controller-client,org.jboss.dmr</Dependencies>
+                            <Import-Package>org.w3c.dom,*</Import-Package>
                         </manifestEntries>
                     </archive>
                 </configuration>

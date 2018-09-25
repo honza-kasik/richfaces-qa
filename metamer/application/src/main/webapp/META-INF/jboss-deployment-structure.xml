@@ -8,6 +8,7 @@
                     <path name="javax/api"/>
                 </paths>
             </system>
+            <module name="javax.api" export="true"/>
         </dependencies>
     </deployment>
 </jboss-deployment-structure>
